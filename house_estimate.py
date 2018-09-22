@@ -13,7 +13,8 @@ from scipy import stats
 import warnings
 warnings.filterwarnings('ignore')
 
-
+#added 2
+#added comment
 
 #Create dictionary
 from collections import defaultdict
@@ -95,7 +96,7 @@ for column in testDataX:
 fitData = pd.concat([trainDataX,testDataX])
 
 ###############################################################
-### these line is used for cross validation testing         
+### these line is used for cross validation testing
 ###############################################################
 #X_train, X_test, y_train,y_test = cross_validation.train_test_split(trainDataX, trainDataY, test_size=0.1, random_state=0)
 #clf = linear_model.ElasticNet(alpha = 0.1)
@@ -111,7 +112,7 @@ trainDataY = np.log1p(trainDataY)
 # transform and scale data
 #Use LabelEncoder to normalize labels
 
-#Replace Missing 
+#Replace Missing
 #fitData.replace(np.nan, 'NAN', inplace=True)
 #trainDataX.replace(np.nan, 'NAN', inplace=True)
 #testDataX.replace(np.nan, 'NAN', inplace=True)
@@ -152,11 +153,11 @@ predicted = (np.exp(predicted)).astype(float)
 
 # create file
 print('Generating submission file ...')
-results = pd.DataFrame({'SalePrice': predicted}, dtype=int)  
+results = pd.DataFrame({'SalePrice': predicted}, dtype=int)
 
 
 print(clf.score(trainDataX,trainDataY))
-        
+
 #Writting to csv
 results.index += 1461
-results.to_csv('regressor.csv', index=True, header=True, index_label='id')  
+results.to_csv('regressor.csv', index=True, header=True, index_label='id')
